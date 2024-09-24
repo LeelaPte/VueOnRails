@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("POSTGRES_USER")%>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD")%>
+
+development:
+  <<: *default
+  database: vue_on_rails_development
+test:
+  <<: *default
+  database: vue_on_rails_test
+
+production:
+  <<: *default
+  database: vue_on_rails_production
+  username: vue_on_rails
+  password: <%= ENV["VUE_ON_RAILS_DATABASE_PASSWORD"] %>
