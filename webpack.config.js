@@ -36,6 +36,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public/packs'),
     compress: true,
-    port: 3035
+    port: 3035,
+    watchFiles: ['app/javascript/**/*', 'app/views/**/*'],
+    hot: true,
+    liveReload: true
   }
 };
