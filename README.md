@@ -1,4 +1,5 @@
 # VueOnRails
+To access the project URL, you must use: `localhost:3000`
 
 ## Docker Installation
 ### Building
@@ -24,12 +25,14 @@ docker compose down -v
 ```
 
 ## Localhost Installation
+This project uses `Postgres` as database manager.
+
 ### Ruby Version
 This project is using ruby `3.3.5`
 ### Install Rails
-- Install Yarn dependencies: `yarn install`
 - Install Ruby Bundler: `gem install bundler`
 - Install project gems: `bundle install`
+- Install Yarn dependencies: `yarn install`
 
 ## Run Servers
 - In parallel is required to run `rails server` in one terminal and in other terminal run `webpack`.
