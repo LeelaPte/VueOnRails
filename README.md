@@ -1,5 +1,28 @@
 # VueOnRails
 
+## Docker Installation
+### Building
+```
+docker compose build
+```
+### Run the app
+```
+docker compose up
+```
+### Stop the app
+```
+docker compose down
+```
+### Common Scripts
+#### Rails Console
+```
+docker compose run vue_on_rails_app rails c
+```
+#### Remove the Volumes
+```
+docker compose down -v
+```
+
 ## Localhost Installation
 ### Ruby Version
 This project is using ruby `3.3.5`
@@ -21,8 +44,8 @@ rails s
 bin/webpack-dev-server
 ```
 
-## Common Scripts
-### Clear Webpack Cache
+### Common Scripts
+#### Clear Webpack Cache
 ```
 bin/webpack --clear-cache
 ```
