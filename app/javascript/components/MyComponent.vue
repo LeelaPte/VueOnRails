@@ -15,12 +15,17 @@
     </div>
     <div class="message-container" v-bind:class="{ isItalic: isItalic }">
       <h3>{{ message }}</h3>
-      <button @click="changeToItalic">Change My Style!</button>
+      <div class="button-container">
+        <button @click="changeToItalic">Change My Style!</button>
+        <button @click="changeMessage">Change My Message</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import { mapState, mapMutations } from 'vuex';
+
   export default {
     name: 'MyComponent',
     data() {
@@ -28,8 +33,6 @@
         title: 'Lorem Ipsum',
         isVisible: false,
         isItalic: true,
-        message: `"Excepteur sint occaecat cupidatat non proident,
-                  sunt in culpa qui officia deserunt mollit anim id est laborum."`,
         list: [
           { id: 1, text: 'Lorem ipsum dolor sit amet' },
           { id: 2, text: 'consectetur adipiscing elit' },
@@ -38,6 +41,7 @@
       }
     },
     methods: {
+      ...mapMutations(['setMessageOptionOne', 'setMessage']),
       toggleVisibility() {
         this.isVisible = !this.isVisible;
       },
@@ -46,7 +50,24 @@
       },
       changeToItalic(){
         this.isItalic = !this.isItalic;
+      },
+      changeMessage() {
+        const optionOne = `"Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur"`
+        const optionTwo = `"Excepteur sint occaecat cupidatat non proident,
+                            sunt in culpa qui officia deserunt mollit anim id est laborum."`
+
+        if (this.messageOptionOne) {
+          this.setMessage(optionOne);
+          this.setMessageOptionOne(false);
+        } else {
+          this.setMessage(optionTwo);
+          this.setMessageOptionOne(true);
+        }
       }
+    },
+    computed: {
+      ...mapState(['messageOptionOne', 'message'])
     }
   }
 </script>
